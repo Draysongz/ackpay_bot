@@ -204,9 +204,9 @@ const sendPay = async (email, invoiceId) => {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '"Instaweb" <dharmiegra4@gmail.com>', // sender address
+        from: '"ACK HUB" <dharmiegra4@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: 'Instaweb Payment Confirmation', // Subject line
+        subject: '3BD Payment Confirmation', // Subject line
         text: `The payment for invoice ${invoiceId} has been confirmed.`, // plain text body
         html: `<p>The payment for invoice ${invoiceId} has been confirmed.</p>` // html body
     });
