@@ -352,4 +352,9 @@ couponCodeScene.on('message', async (ctx) => {
     }
 });
 
-bot.launch()
+bot.launch({
+    webhook:{
+        domain: 'https://ackpay.onrender.com',
+        port: 3000
+    }
+})
