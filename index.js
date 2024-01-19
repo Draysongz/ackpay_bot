@@ -91,7 +91,7 @@ bot.start(async (ctx) => {
 
     if (existingUser) {
         const welcomeMessage = `🚀 Welcome to 3BD Coding Bootcamp! 🚀\n\n👤 Participant ID: ${userId}\n\n💰 Payment Status: ${existingUser.payStatus}\n🔒 Access Granted: ${existingUser.payStatus === 'paid' ? 'Yes' : 'No'}`;
-        ctx.replyWithVideo(
+        ctx.replyWithPhoto(
             { source: "./loo.JPG" },
             {
                 caption: welcomeMessage,
