@@ -12,7 +12,7 @@ const botToken = process.env.botToken || "6707170701:AAHUfdtPjwfuWRYDThtLKEcxckf
 
 const bot = new Telegraf(botToken);
 connectDB()
-const token = process.env.CryptoPay_Token  || "146147:AAOXC6qly8cwRrJpGxoyPKY00FlmSehnKjh";
+const token = "146147:AAOXC6qly8cwRrJpGxoyPKY00FlmSehnKjh";
 const cryptoPay = new CryptoPay(token, {
     hostname: 'pay.crypt.bot',
     protocol: 'https'
