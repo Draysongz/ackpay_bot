@@ -14,7 +14,7 @@ const bot = new Telegraf(botToken);
 connectDB()
 const token = process.env.CryptoPay_Token
 const cryptoPay = new CryptoPay(token, {
-    hostname: 'testnet-pay.crypt.bot',
+    hostname: 'pay.crypt.bot',
     protocol: 'https'
 });
 
@@ -149,7 +149,7 @@ paymentScene.enter(async (ctx) => {
     if (existingUser && existingUser.payStatus === 'pending') {
         try {
             // Generate the invoice
-            const invoice = await cryptoPay.createInvoice(Assets.ETH, 0.001, {
+            const invoice = await cryptoPay.createInvoice(Assets.USDT, 10, {
                 description: '3BD Bootcamp Registration Fee',
                 paid_btn_name: PaidButtonNames.OPEN_BOT,
                 paid_btn_url: 'https://t.me/AckPay_bot'
