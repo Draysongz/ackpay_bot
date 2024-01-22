@@ -102,7 +102,7 @@ bot.start(async (ctx) => {
                             { text: "Make Payment", callback_data: "make_payment" },
                         ],
                         [
-                            { text: "Enter Coupon Code", callback_data: "enter_code" },
+                            // { text: "Enter Coupon Code", callback_data: "enter_code" },
                             { text: "Contact Support", url: "https://t.me/Habibilord" }
                         ],
                     ],
@@ -127,18 +127,18 @@ bot.action('make_payment', async (ctx)=>{
     
 })
 
-bot.action('enter_code', async (ctx) => {
-    const userId = ctx.from.id;
+// bot.action('enter_code', async (ctx) => {
+//     const userId = ctx.from.id;
 
-    // Check if user details are already in the database
-    const existingUser = await UserDetails.findOne({ userId });
+//     // Check if user details are already in the database
+//     const existingUser = await UserDetails.findOne({ userId });
 
-    if (existingUser && existingUser.payStatus === 'paid') {
-        ctx.reply('You have already paid. No need to enter a coupon code.');
-    } else {
-        ctx.scene.enter('couponCodeScene');
-    }
-});
+//     if (existingUser && existingUser.payStatus === 'paid') {
+//         ctx.reply('You have already paid. No need to enter a coupon code.');
+//     } else {
+//         ctx.scene.enter('couponCodeScene');
+//     }
+// });
 
 
 paymentScene.enter(async (ctx) => {
@@ -253,9 +253,9 @@ paymentScene.action("pay_status", async (ctx) => {
 });
 
 
-couponCodeScene.enter(async (ctx)=>{
-    await ctx.reply('Please enter the coupon code')
-})
+// couponCodeScene.enter(async (ctx)=>{
+//     await ctx.reply('Please enter the coupon code')
+// })
 
 
 
@@ -328,29 +328,29 @@ const verifyCode = async (ctx, userId, code) => {
 };
 
 // Example usage in couponCodeScene
-couponCodeScene.on('message', async (ctx) => {
-    const userId = ctx.from.id;
-    await ctx.reply('Verifying code...');
-    const couponCode = ctx.message.text;
+// couponCodeScene.on('message', async (ctx) => {
+//     const userId = ctx.from.id;
+//     await ctx.reply('Verifying code...');
+//     const couponCode = ctx.message.text;
 
-    try {
-        // Verify the coupon code
-        const verificationResult = await verifyCode(ctx, userId, couponCode);
+//     try {
+//         // Verify the coupon code
+//         const verificationResult = await verifyCode(ctx, userId, couponCode);
 
-        if (verificationResult) {
-            // Code verification successful
-            await ctx.reply('Coupon code verified successfully. Please join the official community [here](https://t.me/+6S0VeCQRJ1A3ZGQ0).');
-            ctx.scene.leave();            
-        } else {
-            // Code verification failed
-            await ctx.reply('Coupon code verification failed. Please check your code.');
-        }
-    } catch (error) {
-        // Handle other errors
-        console.error('Coupon code verification error:', error.message);
-        ctx.leave()
-    }
-});
+//         if (verificationResult) {
+//             // Code verification successful
+//             await ctx.reply('Coupon code verified successfully. Please join the official community [here](https://t.me/+6S0VeCQRJ1A3ZGQ0).');
+//             ctx.scene.leave();            
+//         } else {
+//             // Code verification failed
+//             await ctx.reply('Coupon code verification failed. Please check your code.');
+//         }
+//     } catch (error) {
+//         // Handle other errors
+//         console.error('Coupon code verification error:', error.message);
+//         ctx.leave()
+//     }
+// });
 
 bot.launch({
     webhook:{
